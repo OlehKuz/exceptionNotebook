@@ -1,6 +1,6 @@
 package com.company.model;
 
-public enum Database{
+public enum Database extends Throwable{
     USER_1 ("VAsil", "chap123")
     USER_2 ("boBik", "terminator9")
     USER_3 ("Vetal", "Kyku")
@@ -9,9 +9,17 @@ public enum Database{
     private String firstName;
     private String login;
 
-    publci Database(String firstName, String login){
-        this.firstName = firstName;
-        this.login = login;
+    public Database(){
+    }
+
+    public addEntry(String firstName, String login){
+            for(Database l : Database.values()){
+                if(l.login.equals(login)){
+                    super(login);
+                }
+            }
+            this.firstName = firstName;
+            this.login = login;
     }
 
 
