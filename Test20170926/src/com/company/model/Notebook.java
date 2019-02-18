@@ -11,9 +11,9 @@ public class Notebook {
 
     public boolean addNewUser(String name, String login) {
         try{
-
-        }catch (){
-
+            addEntry(login);
+        }catch (exception e){
+            throw new notUniqueLoginException(message, login);
         }
     }
 }

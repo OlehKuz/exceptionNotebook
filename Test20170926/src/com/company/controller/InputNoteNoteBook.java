@@ -36,5 +36,6 @@ public class InputNoteNoteBook {
         this.login =
                 utilityController.inputStringValueWithScanner
                         (LOGIN_DATA, REGEX_LOGIN);
+        e.getLoginData();
     }
 }
