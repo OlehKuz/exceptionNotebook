@@ -37,9 +37,10 @@ public class InputNoteNoteBook {
         this.login =
                 utilityController.inputStringValueWithScanner
                         (LOGIN_DATA, REGEX_LOGIN);
+        Notebook note = new Notebook();
 
         try{
-            Notebook note = new Notebook();
+
             note.addNewUser(firstName, login);
         }catch (notUniqueLoginException e){
             System.out.println("Second catch of exceptin");

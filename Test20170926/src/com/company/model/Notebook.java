@@ -2,7 +2,6 @@ package com.company.model;
 
 import java.util.Map;
 import java.util.HashMap;
-import com.company.model.Database;
 
 public class Notebook {
 
@@ -12,12 +11,11 @@ public class Notebook {
 
     }
 
-    public boolean addNewUser(String name, String login) throws notUniqueLoginException{
-        try{
-            Database data = new Database();
-            data.addEntry(name,login);
+    public void addNewUser(String name, String login) throws notUniqueLoginException {
+        try {
+            Database.addEntry(name, login);
             users.put(name, login);
-        }catch (notUniqueLoginException e){
+        } catch (notUniqueLoginException e) {
             System.out.println("exception caught");
             System.out.println("First exception hadle starck trace");
             throw e;
