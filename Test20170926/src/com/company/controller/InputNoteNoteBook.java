@@ -16,16 +16,18 @@ import static com.company.view.TextConstant.LOGIN_DATA;
 public class InputNoteNoteBook {
     private View view;
     private Scanner sc;
+    private Notebook notebook;
 
     private String firstName;
     private String login;
 
-    public InputNoteNoteBook(View view, Scanner sc) {
+    public InputNoteNoteBook(View view, Scanner sc, Notebook notebook) {
         this.view = view;
         this.sc = sc;
+        this.notebook = notebook;
     }
 
-    public void inputNote() {
+    public void inputNote(Notebook note) {
         UtilityController utilityController =
                 new UtilityController(sc, view);
         String str = (String.valueOf(View.bundle.getLocale()).equals("ua"))
@@ -34,18 +36,19 @@ public class InputNoteNoteBook {
         this.firstName =
                 utilityController.inputStringValueWithScanner
                         (FIRST_NAME, str);
-        this.login =
-                utilityController.inputStringValueWithScanner
-                        (LOGIN_DATA, REGEX_LOGIN);
-        Notebook note = new Notebook();
-
-        try{
-            note.addNewUser(firstName, login);
-            System.out.println("success");
-        }catch (notUniqueLoginException ex){
-            ex.printStackTrace();
-            System.out.println(ex.getMessage());
+        boolean addedSuccess = false;
+        while (!addedSuccess) {
+            try {
+                this.login = utilityController.inputStringValueWithScanner(LOGIN_DATA, REGEX_LOGIN);
+                addedSuccess = note.addNewUser(firstName, login);
+                System.out.printf("You have successfully created an account with name %s and login %s ",
+                        this.firstName, this.login );
+            } catch (notUniqueLoginException ex) {
+                ex.printStackTrace();
+                System.out.println(ex.getMessage());
+                System.out.println("Your name is " + this.firstName);
+                System.out.println("Login you tried last time " + this.login);
+            }
         }
-
     }
 }

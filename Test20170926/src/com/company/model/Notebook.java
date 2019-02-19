@@ -11,10 +11,11 @@ public class Notebook {
 
     }
 
-    public void addNewUser(String name, String login) throws notUniqueLoginException {
+    public boolean addNewUser(String name, String login) throws notUniqueLoginException {
         try {
             Database.addEntry(name, login);
             users.put(name, login);
+            return true;
         } catch (notUniqueLoginException e) {
             throw e;
         }
