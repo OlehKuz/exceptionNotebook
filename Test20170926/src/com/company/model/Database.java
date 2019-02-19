@@ -25,7 +25,7 @@ public enum Database {
     public static void addEntry(String firstName, String login) throws notUniqueLoginException {
         for(Database users : Database.values()){
             if(users.getLogin().equals(login)){
-                throw new notUniqueLoginException("Sorry , this login is already used by smn else "+login);
+                throw new notUniqueLoginException("Sorry, login " + login + " is already used by smn else ");
             }
         }
     }

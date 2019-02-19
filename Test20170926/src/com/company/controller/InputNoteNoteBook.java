@@ -16,15 +16,14 @@ import static com.company.view.TextConstant.LOGIN_DATA;
 public class InputNoteNoteBook {
     private View view;
     private Scanner sc;
-    private Notebook notebook;
+
 
     private String firstName;
     private String login;
 
-    public InputNoteNoteBook(View view, Scanner sc, Notebook notebook) {
+    public InputNoteNoteBook(View view, Scanner sc) {
         this.view = view;
         this.sc = sc;
-        this.notebook = notebook;
     }
 
     public void inputNote(Notebook note) {
@@ -33,9 +32,7 @@ public class InputNoteNoteBook {
         String str = (String.valueOf(View.bundle.getLocale()).equals("ua"))
                 ? REGEX_NAME_UKR : REGEX_NAME_LAT;
 
-        this.firstName =
-                utilityController.inputStringValueWithScanner
-                        (FIRST_NAME, str);
+        this.firstName = utilityController.inputStringValueWithScanner(FIRST_NAME, str);
         boolean addedSuccess = false;
         while (!addedSuccess) {
             try {
@@ -46,8 +43,6 @@ public class InputNoteNoteBook {
             } catch (notUniqueLoginException ex) {
                 ex.printStackTrace();
                 System.out.println(ex.getMessage());
-                //System.out.println("Your name is " + this.firstName);
-                //System.out.println("Login you tried last time " + this.login);
             }
         }
     }
