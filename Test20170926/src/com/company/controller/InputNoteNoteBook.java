@@ -46,8 +46,8 @@ public class InputNoteNoteBook {
             } catch (notUniqueLoginException ex) {
                 ex.printStackTrace();
                 System.out.println(ex.getMessage());
-                System.out.println("Your name is " + this.firstName);
-                System.out.println("Login you tried last time " + this.login);
+                //System.out.println("Your name is " + this.firstName);
+                //System.out.println("Login you tried last time " + this.login);
             }
         }
     }
