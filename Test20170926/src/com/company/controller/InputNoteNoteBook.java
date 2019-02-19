@@ -1,5 +1,6 @@
 package com.company.controller;
-
+import com.company.model.notUniqueLoginException;
+import com.company.model.Notebook;
 import com.company.view.View;
 
 import java.util.Scanner;
@@ -36,6 +37,15 @@ public class InputNoteNoteBook {
         this.login =
                 utilityController.inputStringValueWithScanner
                         (LOGIN_DATA, REGEX_LOGIN);
-        e.getLoginData();
+
+        try{
+            Notebook note = new Notebook();
+            note.addNewUser(firstName, login);
+        }catch (notUniqueLoginException e){
+            System.out.println("Second catch of exceptin");
+            e.toString();
+            e.getStackTrace();
+        }
+
     }
 }
