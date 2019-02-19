@@ -16,8 +16,6 @@ public class Notebook {
             Database.addEntry(name, login);
             users.put(name, login);
         } catch (notUniqueLoginException e) {
-            System.out.println("exception caught");
-            System.out.println("First exception hadle starck trace");
             throw e;
         }
     }

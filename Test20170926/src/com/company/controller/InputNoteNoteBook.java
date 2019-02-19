@@ -40,13 +40,11 @@ public class InputNoteNoteBook {
         Notebook note = new Notebook();
 
         try{
-
             note.addNewUser(firstName, login);
             System.out.println("success");
-        }catch (notUniqueLoginException e){
-            System.out.println("Second catch of exceptin");
-            System.out.println(e.toString());
-            System.out.println(e.getStackTrace());
+        }catch (notUniqueLoginException ex){
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
 
     }
